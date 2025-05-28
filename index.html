@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🎉 Happy Birthday MOM!</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -18,9 +18,7 @@
       --flame-edge: orange;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -34,22 +32,53 @@
       position: relative;
     }
 
+    #startSection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    #startBtn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #ff4081;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #startBtn:hover {
+      background-color: #e91e63;
+    }
+
+    #birthdayContent {
+      display: none;
+      padding: 0 15px;
+    }
+
     h1 {
       font-size: 2.5em;
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 10px;
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
       animation: pop 1.5s ease-out infinite alternate;
     }
 
     .message {
-      max-width: 800px;
-      margin: 0 auto 40px;
-      font-size: 1.2em;
+      max-width: 500em;
+      margin: 0 auto;
+      font-size: 1.1em;
       color: var(--text-sub);
       padding: 20px;
       animation: fadeIn 2s ease-in-out;
-      line-height: 1.5;
+      margin-bottom: 25px;
+      margin-top: -30px;
     }
 
     .cake {
@@ -73,11 +102,11 @@
     .top { width: 80px; height: 40px; bottom: 110px; }
 
     .candle {
-      position: absolute;
       top: -12px;
       left: 50%;
       width: 10px;
       height: 40px;
+      position: absolute;
       background: #ddd;
       border-radius: 2px;
       transform: translateX(-50%);
@@ -129,13 +158,13 @@
 
     .tree {
       position: absolute;
-      width: 100px;
+      width: 80px;
       height: auto;
       bottom: 0;
       z-index: 5;
     }
 
-    .tree.left { left: 5px; }
+    .tree.left { left: 5px; transform: scaleX(-1); }
     .tree.right { right: 5px; transform: scaleX(-1); }
 
     .spark-container {
@@ -183,89 +212,108 @@
       to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
     }
 
-    /* Responsive Styles */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 15px;
-        padding: 8px;
-      }
+    /* 🔧 Responsive Styles */
+    @media (max-width: 768px) {
+      h1 { font-size: 2em; }
+      .message { font-size: 1em; padding: 10px; }
+      .cake { transform: scale(0.9); }
+      .tree { width: 60px; }
+    }
 
-      .message {
-        font-size: 1em;
-        padding: 12px 15px;
-        max-width: 95%;
-        margin-bottom: 30px;
-      }
-
-      .footer {
-        font-size: 0.9em;
-        padding: 8px 5px;
-      }
-
-      .cake {
-        transform: scale(0.9);
-      }
-
-      .tree {
-        width: 80px;
-      }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5em; }
+      #startBtn { font-size: 1em; padding: 12px 24px; }
+      .cake { transform: scale(0.75); }
+      .message { font-size: 0.75em; padding: 10px; }
+      .footer { font-size: 0.65em; }
     }
   </style>
 </head>
 <body>
 
-  <div class="spark-container" id="sparkContainer"></div>
-
-  <h1>
-    Happy Birthday
-         MOM 
-  </h1>
-  <div class="message">
-    MOM, A million times of love to you, from your son. May the Allah Almighty give you a long, healthy, and wealthy life filled with love, happiness, and endless joy. May your day be as bright, beautiful, and delightful as you are. May your dreams come true, and may Allah Almighty protect you from all bad spirits and evil eyes.
+  <div id="startSection">
+    <h1>🎉 Get Your Birthday Surprise!</h1>
+    <button id="startBtn">Start</button>
   </div>
 
-  <div class="cake">
-    <div class="layer top"></div>
-    <div class="layer middle"></div>
-    <div class="layer bottom"></div>
-    <div class="candle"><div class="flame"></div></div>
+  <div id="birthdayContent">
+
+    <div class="spark-container" id="sparkContainer"></div>
+
+    <h1>Happy Birthday</h1>
+    <h1 style="margin-top: -40px;">🎉MOM🎂</h1>
+
+    <div class="message">
+      MOM, A million times of love to you, from your son. May the Allah Almighty give you a long, healthy, and wealthy life filled with love, happiness, and endless joy. May your day be as bright, beautiful, and delightful as you are. May your dreams come true, and may Allah Almighty protect you from all bad spirits and evil eyes.
+    </div>
+
+    <div class="cake">
+      <div class="layer top"></div>
+      <div class="layer middle"></div>
+      <div class="layer bottom"></div>
+      <div class="candle"><div class="flame"></div></div>
+    </div>
+
+    <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree left" />
+    <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree right" />
+
+    <div class="footer">
+Made by your SON Mujahid
+</div>
   </div>
 
-  <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree left" />
-  <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree right" />
-
-  <div class="footer">Made with 💝 by your SON Mujahid</div>
+  <audio id="bgm" loop>
+    <source src="https://raw.githubusercontent.com/MujahidAliDeveloper01/Birthday-Surprise/fec46b90049942a6f373744bed779ac4ed0cfa2a/birthday.mp3" type="audio/mp3" />
+  </audio>
 
   <script>
-    for (let i = 0; i < 30; i++) {
-      const b = document.createElement('div');
-      b.className = 'balloon';
-      b.style.left = Math.random() * 100 + 'vw';
-      b.style.animationDuration = (6 + Math.random() * 4) + 's';
-      b.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 90%, 70%), hsl(${Math.random() * 360}, 70%, 60%))`;
-      document.body.appendChild(b);
+    const startBtn = document.getElementById("startBtn");
+    const startSection = document.getElementById("startSection");
+    const birthdayContent = document.getElementById("birthdayContent");
+    const audio = document.getElementById("bgm");
+
+    startBtn.addEventListener("click", () => {
+      audio.play().then(() => {
+        startSection.style.display = "none";
+        birthdayContent.style.display = "block";
+        launchEffects();
+      }).catch(() => {
+        alert("Please allow audio to play!");
+      });
+    });
+
+    function launchEffects() {
+      for (let i = 0; i < 30; i++) {
+        const b = document.createElement('div');
+        b.className = 'balloon';
+        b.style.left = Math.random() * 100 + 'vw';
+        b.style.animationDuration = (6 + Math.random() * 4) + 's';
+        b.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 90%, 70%), hsl(${Math.random() * 360}, 70%, 60%))`;
+        document.body.appendChild(b);
+      }
+
+      const container = document.getElementById("sparkContainer");
+      function createSpark() {
+        const spark = document.createElement("div");
+        spark.className = "spark";
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * (window.innerHeight * 0.3);
+        spark.style.left = `${startX}px`;
+        spark.style.top = `${startY}px`;
+        const dx = (Math.random() - 0.5) * 250 + "px";
+        const dy = (Math.random() - 0.5) * 250 + "px";
+        spark.style.setProperty('--dx', dx);
+        spark.style.setProperty('--dy', dy);
+        container.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+      }
+
+      setInterval(() => {
+        for (let i = 0; i < 10; i++) {
+          setTimeout(createSpark, i * 50);
+        }
+      }, 700);
     }
-
-    const container = document.getElementById("sparkContainer");
-
-    function createSpark() {
-      const spark = document.createElement("div");
-      spark.className = "spark";
-      const startX = Math.random() * window.innerWidth;
-      const startY = Math.random() * (window.innerHeight * 0.3);
-      spark.style.left = `${startX}px`;
-      spark.style.top = `${startY}px`;
-      const dx = (Math.random() - 0.5) * 250 + "px";
-      const dy = (Math.random() - 0.5) * 250 + "px";
-      spark.style.setProperty('--dx', dx);
-      spark.style.setProperty('--dy', dy);
-      container.appendChild(spark);
-      setTimeout(() => spark.remove(), 1200);
-    }
-
-    setInterval(createSpark, 200);
   </script>
-
 </body>
 </html>
