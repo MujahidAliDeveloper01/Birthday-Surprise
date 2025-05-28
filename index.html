@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎉 Happy Birthday, MOM!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-start: #1a001a;
+      --bg-end: #8e24aa;
+      --text-main: #fce4ec;
+      --text-sub: #e1bee7;
+      --text-footer: #ce93d8;
+      --cake-color: #ff3e6c;
+      --balloon-string: #4a148c;
+      --flame-center: #ffeb3b;
+      --flame-edge: orange;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: var(--text-main);
+      text-align: center;
+      height: 100vh;
+    }
+
+    .spark-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 30vh;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .spark {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fffacd, #ff4081);
+      box-shadow:
+        0 0 15px #ff4081,
+        0 0 30px #ffeb3b,
+        0 0 50px rgba(255, 255, 255, 0.4);
+      animation: burst 1.2s ease-out forwards;
+      opacity: 1;
+    }
+
+    @keyframes burst {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.5) translate(var(--dx), var(--dy));
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 50px;
+      animation: pop 1.5s ease-out infinite alternate;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .message {
+      font-size: 1.5em;
+      margin-top: 20px;
+      animation: fadeIn 3s ease-in-out;
+      color: var(--text-sub);
+      padding: 0 20px;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      font-size: 1em;
+      color: var(--text-footer);
+      opacity: 0.8;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      animation: float 12s linear infinite;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 25px;
+      background: var(--balloon-string);
+      transform: translateX(-50%);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .cake {
+      position: relative;
+      margin: 60px auto 20px;
+      width: 220px;
+      height: 180px;
+    }
+
+    .layer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      background: var(--cake-color);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    .bottom { width: 220px; height: 60px; bottom: 0; }
+    .middle { width: 160px; height: 50px; bottom: 60px; }
+    .top { width: 100px; height: 40px; bottom: 110px; }
+
+    .candle {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      width: 10px;
+      height: 40px;
+      background: #ddd;
+      border-radius: 2px;
+      transform: translateX(-50%);
+    }
+
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle, var(--flame-center) 30%, var(--flame-edge) 60%, transparent 70%);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.3s infinite alternate;
+      box-shadow: 0 0 10px 3px rgba(255, 235, 59, 0.6);
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
+    }
+
+    .tree {
+      position: absolute;
+      width: 150px;
+      height: 250px;
+      bottom: 0;
+      z-index: 5;
+    }
+
+    .tree.left {
+      left: 10px;
+    }
+
+    .tree.right {
+      right: 10px;
+      transform: scaleX(-1); /* mirror the tree */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="spark-container" id="sparkContainer"></div>
+
+  <h1>🎉 Happy Birthday, MOM! 🎂</h1>
+  <div class="message">
+    MOM, A million times of love to you, from your son. May the Allah Almighty gives you a Long, healthy and wealthy life filled with a full of love, happiness and endless joy. May your day be as bright, beautiful, and delightful as you are. May your dreams come true, and May Allah Almighty protect you from all bad spirits and evil eyes.
+  </div>
+
+  <div class="cake">
+    <div class="layer top"></div>
+    <div class="layer middle"></div>
+    <div class="layer bottom"></div>
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree left" />
+  <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree right" />
+
+  <div class="footer">Made with 💝 by your SON</div>
+
+  <!-- Balloons -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const b = document.createElement('div');
+      b.className = 'balloon';
+      b.style.left = Math.random() * 100 + 'vw';
+      b.style.animationDuration = (5 + Math.random() * 4) + 's';
+      b.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 90%, 70%), hsl(${Math.random() * 360}, 70%, 60%))`;
+      document.body.appendChild(b);
+    }
+  </script>
+
+  <!-- Spark Animation -->
+  <script>
+    const container = document.getElementById("sparkContainer");
+
+    function createSpark() {
+      const spark = document.createElement("div");
+      spark.className = "spark";
+      const startX = Math.random() * window.innerWidth;
+      const startY = Math.random() * (window.innerHeight * 0.3);
+      spark.style.left = `${startX}px`;
+      spark.style.top = `${startY}px`;
+      const dx = (Math.random() - 0.5) * 250 + "px";
+      const dy = (Math.random() - 0.5) * 250 + "px";
+      spark.style.setProperty('--dx', dx);
+      spark.style.setProperty('--dy', dy);
+      container.appendChild(spark);
+      setTimeout(() => spark.remove(), 1200);
+    }
+
+    setInterval(() => {
+      for (let i = 0; i < 10; i++) {
+        setTimeout(createSpark, i * 50);
+      }
+    }, 700);
+  </script>
+
+  <!-- Background Music -->
+  <audio id="bgm" autoplay loop muted>
+    <source src="your-music-link.mp3" type="audio/mp3" />
+  </audio>
+  <script>
+    const audio = document.getElementById("bgm");
+    const enableAudio = () => {
+      audio.muted = false;
+      audio.play();
+      window.removeEventListener("click", enableAudio);
+    };
+    window.addEventListener("click", enableAudio);
+  </script>
+
+</body>
+</html>
