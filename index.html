@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>🎉 Happy Birthday MOM!</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -27,9 +27,6 @@
       padding: 0;
       overflow: hidden;
       height: 100vh;
-    }
-
-    body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
       color: var(--text-main);
@@ -47,12 +44,12 @@
 
     .message {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
       font-size: 1.2em;
       color: var(--text-sub);
       padding: 20px;
       animation: fadeIn 2s ease-in-out;
-      margin-bottom: 40px;
+      line-height: 1.5;
     }
 
     .cake {
@@ -186,10 +183,33 @@
       to { transform: translateX(-50%) scale(1.2); opacity: 0.8; }
     }
 
+    /* Responsive Styles */
     @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      .message { font-size: 1em; padding: 10px; }
-      .cake { transform: scale(0.9); }
+      h1 {
+        font-size: 2em;
+        margin-top: 15px;
+        padding: 8px;
+      }
+
+      .message {
+        font-size: 1em;
+        padding: 12px 15px;
+        max-width: 95%;
+        margin-bottom: 30px;
+      }
+
+      .footer {
+        font-size: 0.9em;
+        padding: 8px 5px;
+      }
+
+      .cake {
+        transform: scale(0.9);
+      }
+
+      .tree {
+        width: 80px;
+      }
     }
   </style>
 </head>
@@ -201,7 +221,6 @@
   <div class="message">
     MOM, A million times of love to you, from your son. May the Allah Almighty give you a long, healthy, and wealthy life filled with love, happiness, and endless joy. May your day be as bright, beautiful, and delightful as you are. May your dreams come true, and may Allah Almighty protect you from all bad spirits and evil eyes.
   </div>
-
 
   <div class="cake">
     <div class="layer top"></div>
@@ -242,24 +261,7 @@
       setTimeout(() => spark.remove(), 1200);
     }
 
-    setInterval(() => {
-      for (let i = 0; i < 10; i++) {
-        setTimeout(createSpark, i * 50);
-      }
-    }, 700);
-  </script>
-
-  <audio id="bgm" autoplay loop muted>
-    <source src="your-music-link.mp3" type="audio/mp3" />
-  </audio>
-  <script>
-    const audio = document.getElementById("bgm");
-    const enableAudio = () => {
-      audio.muted = false;
-      audio.play();
-      window.removeEventListener("click", enableAudio);
-    };
-    window.addEventListener("click", enableAudio);
+    setInterval(createSpark, 200);
   </script>
 
 </body>
