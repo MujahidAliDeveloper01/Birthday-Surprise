@@ -79,6 +79,9 @@
       animation: fadeIn 2s ease-in-out;
       margin-bottom: 15px;
       margin-top: 7px;
+      min-height: 130px; /* keep height stable to avoid flicker */
+      white-space: pre-wrap; /* keep line breaks */
+      text-align: justify;
     }
 
     .cake {
@@ -226,7 +229,7 @@
       #startBtn { font-size: 1em; padding: 12px 24px; }
       .cake { transform: scale(0.75); }
       .message { font-size: 0.75em; padding: 10px; 
-		 text-align:justify; }
+       text-align:justify; }
       .footer { font-size: 0.65em; text-align: center;}
     }
   </style>
@@ -245,19 +248,7 @@
     <h1>Happy Birthday</h1>
     <h1 style="margin-top: -30px;">🎉 MOM 🎂</h1>
 
-    <div class="message">
-      
-You are the most respected and beloved woman in my life! 😍
-<br>
-
-</br>
-MOM, A million times of love to you, from your son. May the Allah Almighty gives you a Long, healthy and wealthy life filled with a full of love, happiness and endless joy. May Allah Almighty protect you from all bad spirits and evil eyes.
-<br>
-
-</br>
-As your son, I really respect and love you strongly. You deserve all the happiness and beautiful things in life that you’ve given me over the years.
-
-    </div>
+    <div class="message" id="message"></div>
 
     <div class="cake">
       <div class="layer top"></div>
@@ -270,8 +261,8 @@ As your son, I really respect and love you strongly. You deserve all the happine
     <img src="https://clipart-library.com/images/8cGogqXca.png" alt="Tree" class="tree right" />
 
     <div class="footer">
-Made by your SON Mujahid
-</div>
+      Made by your SON Mujahid
+    </div>
   </div>
 
   <audio id="bgm" loop>
@@ -283,16 +274,37 @@ Made by your SON Mujahid
     const startSection = document.getElementById("startSection");
     const birthdayContent = document.getElementById("birthdayContent");
     const audio = document.getElementById("bgm");
+    const messageDiv = document.getElementById("message");
+
+    const fullMessage = `You are the most respected and beloved woman in my life! 😍
+
+MOM, A million times of love to you, from your son. May the Allah Almighty gives you a Long, healthy and wealthy life filled with a full of love, happiness and endless joy. May Allah Almighty protect you from all bad spirits and evil eyes.
+
+As your son, I really respect and love you strongly. You deserve all the happiness and beautiful things in life that you’ve given me over the years.`;
 
     startBtn.addEventListener("click", () => {
       audio.play().then(() => {
         startSection.style.display = "none";
         birthdayContent.style.display = "block";
+        typeMessage(fullMessage, messageDiv, 30); // 30ms delay per character
         launchEffects();
       }).catch(() => {
         alert("Please allow audio to play!");
       });
     });
+
+    function typeMessage(text, element, delay = 50) {
+      element.textContent = ""; // clear before typing
+      let i = 0;
+      function typeNext() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeNext, delay);
+        }
+      }
+      typeNext();
+    }
 
     function launchEffects() {
       for (let i = 0; i < 30; i++) {
