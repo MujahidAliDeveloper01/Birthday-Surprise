@@ -286,7 +286,7 @@ As your son, I really respect and love you strongly. You deserve all the happine
       audio.play().then(() => {
         startSection.style.display = "none";
         birthdayContent.style.display = "block";
-        typeMessage(fullMessage, messageDiv, 30); // 30ms delay per character
+        typeMessage(fullMessage, messageDiv, 15); // 30ms delay per character
         launchEffects();
       }).catch(() => {
         alert("Please allow audio to play!");
